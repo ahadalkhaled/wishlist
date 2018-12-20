@@ -2,28 +2,26 @@
 
 {% block content %}
 
-<form action="{% url 'item-list' %}" class="form-inline my-2 my-lg-0">
+<form action="{% url 'wishlist' %}" class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search Items" aria-label="Search" name="q" value="{{request.GET.q}}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form>
 <div class="row">
-{% for item in items %}
+{% for item in wishlist %}
 <div class="col-sm-4 py-2">
         <div class="card h-100">
             <img class="card-img-top" height="55%" src="{{item.image.url}}" alt="Card image cap">
             <div class="card-body bg-light">
                 <h3 class="card-title">{{item.name}}</h3>
                 <a href="{% url 'item-detail' item.id %}" class="btn btn-outline-dark">More</a>
-            
-                            <button class="btn btn-light"><i id="wish-{{item.id}}" onclick="wish({{item.id}})" class="far fa-star {% if item in wishlist %}text-warning{% endif %} "></i></button>
-
-                        </div>
+            </div>
+                           <!--  <i id="wish-{{item.id}}" onclick="wish({{item.id}})" class="far fa-star {% if item in item_wish %}text-warning{% endif %} "></i> -->
         </div>
     </div>
 
 {% endfor %}
 </div>
-
+<!-- 
 <script type="text/javascript">
     function wish(id){
       var star = "#wish-"+id;
@@ -49,5 +47,5 @@
   
 
 
-</script>
+</script> -->
 {% endblock%}
